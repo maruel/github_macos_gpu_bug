@@ -45,7 +45,10 @@ def main():
       except requests.exceptions.ConnectionError:
         print("Server not ready yet")
       time.sleep(0.1)
-    data = {"prompt": "<|im_start|>user\nWhat are the benefits of GPU acceleration to run large language models?<|im_end|>\n<|im_start|>assistant"}
+    data = {
+      "prompt": "<|im_start|>user\nWhat are the benefits of GPU acceleration to run large language models?<|im_end|>\n<|im_start|>assistant",
+      "n_predict": 64,
+    }
     result = requests.post(f"http://localhost:8080/completion", headers=headers, json=data).json()
     assert data.get("error") is None, data
     print("Result:\n%s", textwrap.indent(json.dumps(result, indent=2), "  "))

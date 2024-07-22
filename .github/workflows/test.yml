@@ -1,0 +1,25 @@
+# Copyright 2024 Marc-Antoine Ruel. All rights reserved.
+# Use of this source code is governed under the Apache License, Version 2.0
+# that can be found in the LICENSE file.
+
+on: [push, pull_request]
+name: Run tests
+jobs:
+  ngl_0:
+    name: "test: -ngl 0"
+    runs-on: "macos-latest"
+    strategy:
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-python@v5
+    - name: ./run_test.py 0
+      run: ./run_test.py 0
+  ngl_1:
+    name: "test: -ngl 1"
+    runs-on: "macos-latest"
+    strategy:
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-python@v5
+    - name: ./run_test.py 1
+      run: ./run_test.py 1

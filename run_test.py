@@ -35,12 +35,15 @@ def main():
   try:
     headers = {"Content-Type": "application/json"}
     for i in range(50):
-      result = requests.get(f"http://localhost:8080/health", headers=headers)
-      if result.status_code == 200:
-        j = result.json()
-        if j["status"] == "ok":
-          print("Server ready!")
-          break
+      try:
+        result = requests.get(f"http://localhost:8080/health", headers=headers)
+        if result.status_code == 200:
+          j = result.json()
+          if j["status"] == "ok":
+            print("Server ready!")
+            break
+      except requests.exceptions.ConnectionError:
+        print("Server not ready yet")
       time.sleep(0.1)
     data = {"prompt": "<|im_start|>user\nWhat are the benefits of GPU acceleration to run large language models?<|im_end|>\n<|im_start|>assistant"}
     result = requests.post(f"http://localhost:8080/completion", headers=headers, json=data).json()

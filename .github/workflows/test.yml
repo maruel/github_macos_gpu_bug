@@ -12,14 +12,16 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - uses: actions/setup-python@v5
+    - run: pip install -r requirements.txt
     - name: ./run_test.py 0
       run: ./run_test.py 0
   ngl_1:
-    name: "test: -ngl 1"
+    name: "test: -ngl 999"
     runs-on: "macos-latest"
     strategy:
     steps:
     - uses: actions/checkout@v4
     - uses: actions/setup-python@v5
-    - name: ./run_test.py 1
-      run: ./run_test.py 1
+    - run: pip install -r requirements.txt
+    - name: ./run_test.py 999
+      run: ./run_test.py 999

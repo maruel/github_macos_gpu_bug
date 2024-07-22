@@ -1,0 +1,5 @@
+/build
+/llama-*-bin-*.zip
+/llama.log
+/qwen2-1_5b-instruct-q2_k.gguf
+/venv

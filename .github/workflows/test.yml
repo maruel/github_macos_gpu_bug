@@ -8,7 +8,6 @@ jobs:
   ngl_0:
     name: "test: -ngl 0"
     runs-on: "macos-latest"
-    strategy:
     steps:
     - uses: actions/checkout@v4
     - uses: actions/setup-python@v5
@@ -18,7 +17,6 @@ jobs:
   ngl_1:
     name: "test: -ngl 999"
     runs-on: "macos-latest"
-    strategy:
     steps:
     - uses: actions/checkout@v4
     - uses: actions/setup-python@v5
